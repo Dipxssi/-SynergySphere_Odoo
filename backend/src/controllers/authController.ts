@@ -4,6 +4,7 @@ import { authService } from '../services/authService';
 
 export const authController = {
   register: async (req: Request, res: Response) => {
+    console.log('Register request received:', req.body);
     try {
       const { firstName, lastName, email, password } = req.body;
       
@@ -20,6 +21,7 @@ export const authController = {
         data: result
       });
     } catch (error: any) {
+      console.error('Registration error:', error);
       res.status(400).json({
         success: false,
         message: error.message

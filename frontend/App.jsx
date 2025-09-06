@@ -23,6 +23,7 @@ const App = () => {
                 <Notifications notifications={notifications} />
                 <main className="container">
                     <Routes>
+                        <Route path="/" element={<Login />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
                         <Route
