@@ -10,8 +10,10 @@ import TaskDetail from './src/pages/TaskDetail';
 import Profile from './src/pages/Profile';
 import PrivateRoute from './src/components/PrivateRoute';
 import Notifications from './src/components/Notifications';
+import CreateProject from './src/components/CreateProject';
 import './src/styles/App.css';
 import './src/styles/Responsive.css';
+
 
 const App = () => {
     const [notifications, setNotifications] = React.useState([]);
@@ -55,6 +57,14 @@ const App = () => {
                             element={
                                 <PrivateRoute>
                                     <Profile />
+                                </PrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="/projects/new"
+                            element={
+                                <PrivateRoute>
+                                    <CreateProject />
                                 </PrivateRoute>
                             }
                         />
