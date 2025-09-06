@@ -9,6 +9,33 @@
     margin-bottom: 2rem;
 }
 
+.dashboard-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.summary-card {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.summary-card h3 {
+    margin-top: 0;
+    color: #555;
+}
+
+.summary-card p {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0;
+    color: #007bff;
+}
+
 .project-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

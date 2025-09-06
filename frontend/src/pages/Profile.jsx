@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
 import { getUserProfile, updateUserProfile } from '../utils/api';
+import { Card, CardContent, Typography, TextField, Button, CircularProgress } from '@mui/material';
 import '../styles/Profile.css';
 
 const Profile = () => {
@@ -45,37 +46,44 @@ const Profile = () => {
     };
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <CircularProgress />;
     }
 
     return (
         <div className="profile-container">
-            <h2>Profile</h2>
-            {error && <p className="error">{error}</p>}
-            {success && <p className="success">{success}</p>}
-            <form onSubmit={handleSubmit} className="profile-form">
-                <div className="form-group">
-                    <label>Name</label>
-                    <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <label>Email</label>
-                    <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <button type="submit" className="btn">Update Profile</button>
-            </form>
+            <Card>
+                <CardContent>
+                    <Typography variant="h5" component="div" gutterBottom>
+                        Profile
+                    </Typography>
+                    {error && <Typography color="error">{error}</Typography>}
+                    {success && <Typography color="primary">{success}</Typography>}
+                    <form onSubmit={handleSubmit}>
+                        <TextField
+                            label="Name"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            fullWidth
+                            margin="normal"
+                            required
+                        />
+                        <TextField
+                            label="Email"
+                            name="email"
+                            type="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            fullWidth
+                            margin="normal"
+                            required
+                        />
+                        <Button type="submit" variant="contained" color="primary">
+                            Update Profile
+                        </Button>
+                    </form>
+                </CardContent>
+            </Card>
         </div>
     );
 };
