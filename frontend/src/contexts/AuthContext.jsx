@@ -13,8 +13,11 @@ export const AuthProvider = ({ children }) => {
             setAuthToken(token);
             try {
                 const response = await api.get('/auth/me');
-                setUser(response.data.user);
+                console.log('User profile response:', response.data);
+                // ✅ Fixed: Use correct response path
+                setUser(response.data.data.user);
             } catch (error) {
+                console.error('Load user error:', error);
                 localStorage.removeItem('token');
                 setAuthToken(null);
                 setUser(null);
@@ -27,19 +30,43 @@ export const AuthProvider = ({ children }) => {
         loadUser();
     }, []);
 
-    const login = (token) => {
+    // ✅ Updated login function to accept user data directly
+    const login = (token, userData = null) => {
+        console.log('AuthContext login called - Token:', !!token, 'UserData:', !!userData);
+        
         localStorage.setItem('token', token);
-        loadUser();
+        setAuthToken(token);
+        
+        if (userData) {
+            // Set user data directly from login response (faster)
+            console.log('Setting user data directly:', userData);
+            setUser(userData);
+            setLoading(false);
+        } else {
+            // Fallback to API call if no user data provided
+            console.log('Loading user from API');
+            loadUser();
+        }
     };
 
     const logout = () => {
         localStorage.removeItem('token');
         setAuthToken(null);
         setUser(null);
+        setLoading(false);
+    };
+
+    const value = {
+        user,
+        login,
+        logout,
+        loading,
+        // ✅ Export loadUser in case you need it elsewhere
+        loadUser
     };
 
     return (
-        <AuthContext.Provider value={{ user, login, logout, loading }}>
+        <AuthContext.Provider value={value}>
             {children}
         </AuthContext.Provider>
     );

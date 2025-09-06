@@ -21,10 +21,30 @@ const Login = () => {
         e.preventDefault();
         try {
             const response = await loginUser(formData);
-            login(response.token);
-            navigate('/dashboard');
+            console.log('Login response:', response);
+
+            if (response.success && response.data && response.data.token) {
+                localStorage.setItem('token', response.data.token);
+
+                // ✅ Pass both token AND user data to login for immediate navigation
+                login(response.data.token, response.data.user);
+
+                // ✅ Use replace to prevent going back to login page
+                navigate('/dashboard', { replace: true });
+            } else {
+                setError('Invalid response from server');
+            }
         } catch (err) {
-            setError('Failed to login. Please check your credentials.');
+            console.error('Login error:', err);
+            
+            // ✅ Better error handling with more specific messages
+            if (err.response?.data?.message) {
+                setError(err.response.data.message);
+            } else if (err.response?.status === 401) {
+                setError('Invalid email or password. Please try again.');
+            } else {
+                setError('Failed to login. Please check your credentials.');
+            }
         }
     };
 

@@ -11,16 +11,25 @@ const api = axios.create({
 
 export const setAuthToken = (token) => {
     if (token) {
-        api.defaults.headers.common['x-auth-token'] = token;
+        api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     } else {
-        delete api.defaults.headers.common['x-auth-token'];
+        delete api.defaults.headers.common['Authorization'];
+        delete axios.defaults.headers.common['Authorization'];
     }
 };
 
+
+
 export const loginUser = async (credentials) => {
-    const response = await api.post('/auth/login', credentials);
-    return response.data;
+  try {
+    const response = await axios.post('http://localhost:5000/api/auth/login', credentials);  
+    return response.data; 
+  } catch (error) {
+    throw error;
+  }
 };
+
 
 export const registerUser = async (userData) => {
     const response = await api.post('/auth/register', userData);
