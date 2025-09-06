@@ -1,29 +1,28 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './src/contexts/AuthContext';
-import Header from './src/components/Header';
+import Layout from './src/components/Layout';
 import Login from './src/pages/Login';
 import Register from './src/pages/Register';
 import Dashboard from './src/pages/Dashboard';
 import ProjectDetail from './src/pages/ProjectDetail';
 import TaskDetail from './src/pages/TaskDetail';
 import Profile from './src/pages/Profile';
-import PrivateRoute from './src/components/PrivateRoute';
-import Notifications from './src/components/Notifications';
 import CreateProject from './src/components/CreateProject';
+import MyTasks from './src/pages/MyTasks';
+import PrivateRoute from './src/components/PrivateRoute';
 import './src/styles/App.css';
 import './src/styles/Responsive.css';
+import './src/styles/Layout.css';
+
 
 
 const App = () => {
-    const [notifications, setNotifications] = React.useState([]);
-
     return (
         <AuthProvider>
             <Router>
-                <Header />
-                <Notifications notifications={notifications} />
-                <main className="container">
+                <Layout>
+                    {/* ✅ CRITICAL: Routes must wrap ALL Route components */}
                     <Routes>
                         <Route path="/" element={<Login />} />
                         <Route path="/login" element={<Login />} />
@@ -33,6 +32,22 @@ const App = () => {
                             element={
                                 <PrivateRoute>
                                     <Dashboard />
+                                </PrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="/my-tasks"
+                            element={
+                                <PrivateRoute>
+                                    <MyTasks />
+                                </PrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="/projects/new"
+                            element={
+                                <PrivateRoute>
+                                    <CreateProject />
                                 </PrivateRoute>
                             }
                         />
@@ -61,15 +76,16 @@ const App = () => {
                             }
                         />
                         <Route
-                            path="/projects/new"
+                            path="/profile"
                             element={
                                 <PrivateRoute>
-                                    <CreateProject />
+                                    <Profile />
                                 </PrivateRoute>
                             }
                         />
+
                     </Routes>
-                </main>
+                </Layout>
             </Router>
         </AuthProvider>
     );

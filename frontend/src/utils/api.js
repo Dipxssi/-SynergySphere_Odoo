@@ -51,9 +51,15 @@ export const getProjects = async () => {
     return response.data;
 };
 
-export const getProject = async (id) => {
-    const response = await api.get(`/projects/${id}`);
-    return response.data;
+export const getProject = async (projectId) => {
+    try {
+        const response = await api.get(`/projects/${projectId}`);
+        console.log('Get project API response:', response.data);
+        return response.data;
+    } catch (error) {
+        console.error('Get project error:', error);
+        throw error;
+    }
 };
 
 export const getTask = async (id) => {
@@ -71,14 +77,20 @@ export const getNotifications = async () => {
     return response.data;
 };
 
+
+
 export const createProject = async (projectData) => {
     try {
+        console.log('API: Creating project with data:', projectData);
         const response = await api.post('/projects', projectData);
+        console.log('API: Project creation response:', response.data);
         return response.data;
     } catch (error) {
+        console.error('API: Create project error:', error.response?.data || error);
         throw error;
     }
 };
+
 
 
 export default api;
