@@ -1,0 +1,13 @@
+@media (max-width: 768px) {
+    .header .container {
+        flex-direction: column;
+    }
+
+    .header nav {
+        margin-top: 1rem;
+    }
+
+    .project-list {
+        grid-template-columns: 1fr;
+    }
+}
