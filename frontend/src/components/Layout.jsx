@@ -23,9 +23,29 @@ const Layout = ({ children }) => {
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
+    // Initialize dark mode on component mount
+    useEffect(() => {
+        if (darkMode) {
+            document.body.classList.add('dark-mode');
+            document.body.classList.remove('light-mode');
+        } else {
+            document.body.classList.remove('dark-mode');
+            document.body.classList.add('light-mode');
+        }
+    }, []);
+
     const toggleDarkMode = () => {
-        setDarkMode(!darkMode);
-        document.body.classList.toggle('light-mode');
+        setDarkMode(prevMode => {
+            const newMode = !prevMode;
+            if (newMode) {
+                document.body.classList.add('dark-mode');
+                document.body.classList.remove('light-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+                document.body.classList.add('light-mode');
+            }
+            return newMode;
+        });
     };
 
     const toggleProfileMenu = () => {
@@ -54,7 +74,7 @@ const Layout = ({ children }) => {
     }
 
     return (
-        <div className={`app-layout ${darkMode ? 'dark-mode' : 'light-mode'}`}>
+        <div className="app-layout">
             {/* Sidebar */}
             <div className="sidebar">
                 <div className="sidebar-header">
@@ -66,13 +86,13 @@ const Layout = ({ children }) => {
                         to="/dashboard" 
                         className={`nav-item ${location.pathname === '/dashboard' ? 'active' : ''}`}
                     >
-                        <span>📋</span> Projects
+                        Projects
                     </Link>
                     <Link 
                         to="/my-tasks" 
                         className={`nav-item ${location.pathname === '/my-tasks' ? 'active' : ''}`}
                     >
-                        <span>✅</span> My Tasks
+                         My Tasks
                     </Link>
                 </nav>
 
@@ -118,17 +138,17 @@ const Layout = ({ children }) => {
                                 
                                 <div className="profile-actions">
                                     <button className="profile-action-btn" onClick={goToProfile}>
-                                        <span>👤</span> View Profile
+                                        View Profile
                                     </button>
                                     <button className="profile-action-btn" onClick={goToMyTasks}>
-                                        <span>✅</span> My Tasks
+                                         My Tasks
                                     </button>
                                     <button className="profile-action-btn">
-                                        <span>⚙️</span> Settings
+                                         Settings
                                     </button>
                                     <div className="menu-divider"></div>
                                     <button className="profile-action-btn logout" onClick={handleLogout}>
-                                        <span>🚪</span> Logout
+                                        Logout
                                     </button>
                                 </div>
                             </div>
@@ -154,7 +174,7 @@ const Layout = ({ children }) => {
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 className="search-input"
                             />
-                            <span className="search-icon">🔍</span>
+                            <span className="search-icon"></span>
                         </div>
                     </div>
 

@@ -1007,3 +1007,231 @@
 .mt-2 { margin-top: 0.5rem; }
 .mt-3 { margin-top: 0.75rem; }
 .mt-4 { margin-top: 1rem; }
+
+/* ========== FULL PAGE DARK MODE STYLES ========== */
+
+/* Default Body Styles */
+body {
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: #0f0f0f;
+    color: #ffffff;
+}
+
+/* Light Mode Body */
+body:not(.dark-mode) {
+    background-color: #f8fafc !important;
+    color: #1e293b !important;
+}
+
+/* Light Mode - App Layout */
+body:not(.dark-mode) .app-layout {
+    background: #f8fafc !important;
+    color: #1e293b !important;
+}
+
+/* Light Mode - Sidebar */
+body:not(.dark-mode) .sidebar {
+    background: #ffffff !important;
+    border-right: 1px solid #e2e8f0 !important;
+}
+
+body:not(.dark-mode) .sidebar-header h2 {
+    color: #1e293b !important;
+}
+
+body:not(.dark-mode) .nav-item {
+    color: #64748b !important;
+}
+
+body:not(.dark-mode) .nav-item:hover {
+    background: rgba(0, 0, 0, 0.05) !important;
+    color: #1e293b !important;
+}
+
+body:not(.dark-mode) .nav-item.active {
+    background: rgba(59, 130, 246, 0.1) !important;
+    color: #3b82f6 !important;
+}
+
+/* Light Mode - Top Header */
+body:not(.dark-mode) .top-header {
+    background: #ffffff !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+}
+
+body:not(.dark-mode) .header-left h1 {
+    color: #1e293b !important;
+}
+
+body:not(.dark-mode) .search-input {
+    background: #f1f5f9 !important;
+    border: 1px solid #e2e8f0 !important;
+    color: #1e293b !important;
+}
+
+body:not(.dark-mode) .search-input::placeholder {
+    color: #64748b !important;
+}
+
+/* Light Mode - Main Content */
+body:not(.dark-mode) .page-content {
+    background: #f8fafc !important;
+    color: #1e293b !important;
+}
+
+body:not(.dark-mode) .page-header h2 {
+    color: #1e293b !important;
+}
+
+body:not(.dark-mode) .page-header p {
+    color: #64748b !important;
+}
+
+/* Light Mode - Project Cards */
+body:not(.dark-mode) .project-card {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    color: #1e293b !important;
+}
+
+body:not(.dark-mode) .project-card h3 {
+    color: #1e293b !important;
+}
+
+body:not(.dark-mode) .project-card p {
+    color: #64748b !important;
+}
+
+body:not(.dark-mode) .project-card:hover {
+    border-color: #3b82f6 !important;
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1) !important;
+}
+
+/* Light Mode - Tasks */
+body:not(.dark-mode) .stat-card {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+}
+
+body:not(.dark-mode) .stat-card h3 {
+    color: #3b82f6 !important;
+}
+
+body:not(.dark-mode) .stat-card p {
+    color: #64748b !important;
+}
+
+body:not(.dark-mode) .task-card {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    color: #1e293b !important;
+}
+
+body:not(.dark-mode) .task-header h4 {
+    color: #1e293b !important;
+}
+
+body:not(.dark-mode) .empty-tasks {
+    background: #ffffff !important;
+    border: 2px dashed #e2e8f0 !important;
+}
+
+body:not(.dark-mode) .empty-tasks h3 {
+    color: #1e293b !important;
+}
+
+body:not(.dark-mode) .empty-tasks p {
+    color: #64748b !important;
+}
+
+/* Light Mode - Profile Page */
+body:not(.dark-mode) .profile-card {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+}
+
+body:not(.dark-mode) .profile-info h3 {
+    color: #1e293b !important;
+}
+
+body:not(.dark-mode) .form-container {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+}
+
+body:not(.dark-mode) .form-container h3 {
+    color: #1e293b !important;
+}
+
+body:not(.dark-mode) .form-group label {
+    color: #374151 !important;
+}
+
+body:not(.dark-mode) .form-group input {
+    background: #f9fafb !important;
+    border: 1px solid #d1d5db !important;
+    color: #1e293b !important;
+}
+
+body:not(.dark-mode) .form-group input::placeholder {
+    color: #9ca3af !important;
+}
+
+body:not(.dark-mode) .profile-stats {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+}
+
+body:not(.dark-mode) .profile-stats h4 {
+    color: #1e293b !important;
+}
+
+body:not(.dark-mode) .stat-label {
+    color: #64748b !important;
+}
+
+/* Light Mode - Forms and Modals */
+body:not(.dark-mode) .add-task-form {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    color: #1e293b !important;
+}
+
+body:not(.dark-mode) .add-task-form h3 {
+    color: #1e293b !important;
+}
+
+/* Light Mode - Dropdown Menu */
+body:not(.dark-mode) .profile-dropdown {
+    background: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    color: #1e293b !important;
+}
+
+body:not(.dark-mode) .profile-name {
+    color: #1e293b !important;
+}
+
+body:not(.dark-mode) .profile-email {
+    color: #64748b !important;
+}
+
+body:not(.dark-mode) .profile-action-btn {
+    color: #1e293b !important;
+}
+
+body:not(.dark-mode) .profile-action-btn:hover {
+    background: rgba(0, 0, 0, 0.05) !important;
+    color: #000000 !important;
+}
+
+body:not(.dark-mode) .menu-divider {
+    background: #e2e8f0 !important;
+}
+
+/* Smooth Transitions for All Elements */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
