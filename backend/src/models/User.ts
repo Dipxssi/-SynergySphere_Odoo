@@ -1,8 +1,9 @@
-import mongoose, { Schema } from 'mongoose';
+import mongoose, { Schema, Types} from 'mongoose';
 import bcrypt from 'bcryptjs';
 
 // Don't extend Document - just define the interface
 export interface IUser {
+  _id: Types.ObjectId;
   firstName: string;
   lastName: string;
   email: string;

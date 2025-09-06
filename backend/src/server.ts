@@ -57,26 +57,26 @@ const startServer = async (): Promise<void> => {
     
     // Start server after database connection
     app.listen(PORT, () => {
-      console.log(`🚀 SynergySphere Backend running on port ${PORT}`);
-      console.log(`📝 Environment: ${process.env.NODE_ENV || 'development'}`);
-      console.log(`🔗 Health check: http://localhost:${PORT}/api/health`);
-      console.log(`🔐 Auth endpoints: http://localhost:${PORT}/api/auth`);
-      console.log(`🌍 CORS enabled for: ${process.env.FRONTEND_URL || 'http://localhost:3000'}`);
+      console.log(`SynergySphere Backend running on port ${PORT}`);
+      console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+      console.log(`Health check: http://localhost:${PORT}/api/health`);
+      console.log(`Auth endpoints: http://localhost:${PORT}/api/auth`);
+      console.log(`CORS enabled for: ${process.env.FRONTEND_URL || 'http://localhost:3000'}`);
     });
   } catch (error) {
-    console.error('❌ Failed to start server:', error);
+    console.error('Failed to start server:', error);
     process.exit(1);
   }
 };
 
-// Graceful shutdown handling
+
 process.on('SIGINT', () => {
-  console.log('\n🔴 Received SIGINT, shutting down gracefully...');
+  console.log('\n Received SIGINT, shutting down gracefully...');
   process.exit(0);
 });
 
 process.on('SIGTERM', () => {
-  console.log('\n🔴 Received SIGTERM, shutting down gracefully...');
+  console.log('\n Received SIGTERM, shutting down gracefully...');
   process.exit(0);
 });
 
